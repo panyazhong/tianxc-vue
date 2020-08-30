@@ -7,16 +7,23 @@
       text-color="#fff"
       active-text-color="#ffd04b"
     >
-      <el-submenu index="1">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
-        </template>
-      </el-submenu>
       <el-menu-item index="2">
         <i class="el-icon-menu"></i>
         <span slot="title">概览</span>
       </el-menu-item>
+
+      <el-submenu index="1">
+        <template slot="title">
+          <i class="el-icon-location"></i>
+          <span>资料</span>
+        </template>
+        <el-menu-item-group>
+          <el-menu-item index="1-1">
+            <router-link to="/material/upload">上传</router-link>
+          </el-menu-item>
+          <el-menu-item index="1-2">下载</el-menu-item>
+        </el-menu-item-group>
+      </el-submenu>
     </el-menu>
   </div>
 </template>
@@ -25,7 +32,6 @@
 export default {
   data() {
     return {
-
     }
   },
   methods: {

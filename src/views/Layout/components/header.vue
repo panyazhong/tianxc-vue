@@ -4,20 +4,28 @@
       Logo
     </div>
     <div>
-      <el-button>用户</el-button>
+      <el-button @click="handleLogin">{{ user }}</el-button>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
 
     }
   },
+  computed: {
+    ...mapGetters([
+      'user'
+    ])
+  },
   methods: {
-
+    handleLogin() {
+      this.$router.push('/login')
+    }
   }
 }
 </script>

@@ -1,8 +1,9 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import layout from '@/views/Layout';
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import layout from '@/views/Layout'
+import materialRoutes from './modules/material'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const staticRoutes = [
   {
@@ -15,13 +16,13 @@ const staticRoutes = [
     name: 'Login',
     component: () => import('../views/Login'),
   },
-];
+]
 
 const router = new VueRouter({
   mode: 'hash',
   base: process.env.BASE_URL,
   routes: staticRoutes,
-});
+})
 
 export const asyncRoutes = [
   {
@@ -39,6 +40,7 @@ export const asyncRoutes = [
       },
     ],
   },
-];
+  ...materialRoutes,
+]
 
-export default router;
+export default router

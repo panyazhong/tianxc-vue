@@ -2,7 +2,7 @@
   <div class="">
     <header-com></header-com>
     <menu-com></menu-com>
-    <router-view></router-view>
+    <router-view class="content"></router-view>
   </div>
 </template>
 
@@ -25,4 +25,10 @@ export default {
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.content {
+  padding: 80px 20px 20px 200px;
+  height: 100vh;
+  box-sizing: border-box;
+}
+</style>

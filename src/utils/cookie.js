@@ -1,9 +1,9 @@
-import JsCookie from 'js-cookie';
+import JsCookie from 'js-cookie'
 
-export function setCookie(token) {
-  JsCookie.set('token', token);
+export function setToken(token) {
+  JsCookie.set('token', token)
 }
 
-export function getCookie() {
-  return JsCookie.get('token');
+export function getToken() {
+  return JsCookie.get('token')
 }

@@ -1,4 +1,4 @@
-import { asyncRoutes } from '../../router';
+import { asyncRoutes } from '../../router'
 
 /**
  * 判断用户是否具有权限
@@ -7,11 +7,11 @@ import { asyncRoutes } from '../../router';
  */
 const hasPermission = (role, route) => {
   if (route.meta && route.meta.roles) {
-    return route.meta.roles.includes(role);
+    return route.meta.roles.includes(role)
   } else {
-    return true;
+    return true
   }
-};
+}
 
 /**
  * 过滤动态路由
@@ -20,20 +20,20 @@ const hasPermission = (role, route) => {
  */
 const filetrRoutes = (asyncRoutes, role) => {
   if (role === 'admin') {
-    return asyncRoutes;
+    return asyncRoutes
   }
   const accessedRouters = asyncRoutes.filter((route) => {
     if (hasPermission(role, route)) {
       if (route.children && route.children.length) {
-        route.children = filetrRoutes(route.children, role);
+        route.children = filetrRoutes(route.children, role)
       }
-      return true;
+      return true
     }
-    return false;
-  });
+    return false
+  })
 
-  return accessedRouters;
-};
+  return accessedRouters
+}
 
 const permissin = {
   state: {
@@ -41,20 +41,20 @@ const permissin = {
   },
   mutations: {
     SET_ROUTES: (state, routes) => {
-      state.accessedRoutes = routes;
+      state.accessedRoutes = routes
     },
   },
   actions: {
     GeneratorRoutes({ commit }, role) {
       return new Promise((resolve, reject) => {
-        const accessedRoutes = filetrRoutes(asyncRoutes, role);
+        const accessedRoutes = filetrRoutes(asyncRoutes, role)
 
-        commit('SET_ROUTES', accessedRoutes);
+        commit('SET_ROUTES', accessedRoutes)
 
-        resolve();
-      });
+        resolve()
+      })
     },
   },
-};
+}
 
-export default permissin;
+export default permissin
