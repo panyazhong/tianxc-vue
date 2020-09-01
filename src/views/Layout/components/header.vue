@@ -4,7 +4,15 @@
       Logo
     </div>
     <div>
-      <el-button @click="handleLogin">{{ user }}</el-button>
+      <el-button @click="handleLogin" type="text" v-if="!user.username"
+        >点击登录</el-button
+      >
+      <div v-else>
+        <span class="el-dropdown-link">
+          {{ user.username }}
+        </span>
+        <el-button type="text">注销</el-button>
+      </div>
     </div>
   </div>
 </template>

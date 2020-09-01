@@ -2,7 +2,9 @@
   <div class="">
     <header-com></header-com>
     <menu-com></menu-com>
-    <router-view class="content"></router-view>
+    <transition name="content" mode="out-in">
+      <router-view class="content"></router-view>
+    </transition>
   </div>
 </template>
 
@@ -30,5 +32,15 @@ export default {
   padding: 80px 20px 20px 200px;
   height: 100vh;
   box-sizing: border-box;
+}
+.content-enter-active,
+.content-leave-active {
+  transition: all 0.5s;
+}
+
+.content-enter,
+.content-leave-to {
+  opacity: 0;
+  margin-left: 20px;
 }
 </style>

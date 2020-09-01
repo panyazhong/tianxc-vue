@@ -59,9 +59,17 @@ export default {
         await this.$refs[formName].validate()
         await this.$store.dispatch('handleLogin',  this.loginForm)
 
-        this.$router.push('/')
+        const { redirect } = this.$route.query
+
+        this.$router.push({
+            path: this.redirect || "/"
+          },
+          onComplete => { },
+          onAbort => { }
+        )
+
       } catch (error) {
-        console.log('error submit!!');
+        console.log(error);
       }
     },
     resetForm(formName) {
@@ -90,6 +98,10 @@ export default {
     left: 50%;
     top: 30%;
     transform: translateX(-50%);
+    h3 {
+      text-align: center;
+      margin: 10px;
+    }
     .el-button {
       width: 100%;
     }

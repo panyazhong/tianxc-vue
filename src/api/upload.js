@@ -1,9 +1,9 @@
-import request from '@/utils/request'
+import request from '@/utils/request';
 
 export function upload(data) {
   return request({
-    url: '/upload/upload',
+    url: '/api/upload/uploadExcel',
     method: 'post',
     data: data,
-  })
+  });
 }
