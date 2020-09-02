@@ -1,10 +1,10 @@
-import Vue from 'vue';
-import VueRouter from 'vue-router';
-import layout from '@/views/Layout';
-import materialRoutes from './modules/material';
-import RankRoutes from './modules/rank';
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import layout from '@/views/Layout'
+import materialRoutes from './modules/material'
+import RankRoutes from './modules/rank'
 
-Vue.use(VueRouter);
+Vue.use(VueRouter)
 
 const staticRoutes = [
   {
@@ -15,9 +15,12 @@ const staticRoutes = [
   {
     path: '/login',
     name: 'Login',
+    meta: {
+      title: '登录',
+    },
     component: () => import('../views/Login'),
   },
-];
+]
 
 export const asyncRoutes = [
   {
@@ -39,15 +42,15 @@ export const asyncRoutes = [
   },
   ...materialRoutes,
   ...RankRoutes,
-];
+]
 
 const createRouter = () =>
   new VueRouter({
     mode: 'hash',
     routes: staticRoutes,
-  });
+  })
 
-const router = createRouter();
+const router = createRouter()
 
 // export function resetRouter() {
 //   const newRouter = createRouter();
@@ -59,4 +62,4 @@ const router = createRouter();
 //   router.addRoutes(params);
 // };
 
-export default router;
+export default router

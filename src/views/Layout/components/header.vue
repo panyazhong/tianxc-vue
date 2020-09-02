@@ -11,7 +11,7 @@
         <span class="el-dropdown-link">
           {{ user.username }}
         </span>
-        <el-button type="text">注销</el-button>
+        <el-button type="text" @click="handleLogout">注销</el-button>
       </div>
     </div>
   </div>
@@ -33,6 +33,14 @@ export default {
   methods: {
     handleLogin() {
       this.$router.push('/login')
+    },
+    async handleLogout() {
+      try {
+        await this.$confirm('确认退出当前用户？', '提示')
+        this.$store.dispatch('HandleLogout')
+      } catch (error) {
+
+      }
     }
   }
 }
