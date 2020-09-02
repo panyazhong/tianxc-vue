@@ -7,10 +7,10 @@
       text-color="#fff"
       active-text-color="#4699ff"
     >
-      <div v-for="route in accessedRoutes" :key="route.path">
+      <div v-for="(route, index) in accessedRoutes" :key="route.path + index">
         <el-submenu v-if="route.path" :index="route.path">
           <template slot="title">
-            <i class="el-icon-location"></i>
+            <i :class="route.meta.icon"></i>
             <span>{{ route.meta.title }}</span>
           </template>
           <el-menu-item
@@ -30,9 +30,9 @@
             :index="baseChild.path"
             @click="handleRoute(baseChild.path)"
           >
-            <i class="el-icon-menu"></i>
+            <i :class="baseChild.meta.icon"></i>
             <span slot="title">{{
-              baseChild.meta ? baseChild.meta.title : 'hhhh'
+              baseChild.meta ? baseChild.meta.title : 'tianxc'
             }}</span>
           </el-menu-item>
         </div>

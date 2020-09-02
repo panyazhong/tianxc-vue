@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import layout from '@/views/Layout';
 import materialRoutes from './modules/material';
+import RankRoutes from './modules/rank';
 
 Vue.use(VueRouter);
 
@@ -29,7 +30,7 @@ export const asyncRoutes = [
         meta: {
           roles: ['admin', 'user'],
           title: '概览',
-          iconL: 'el-icon-menu',
+          icon: 'el-icon-menu',
         },
         component: () =>
           import(/* webpackChunkName: "about" */ '../views/Dashboard'),
@@ -37,6 +38,7 @@ export const asyncRoutes = [
     ],
   },
   ...materialRoutes,
+  ...RankRoutes,
 ];
 
 const createRouter = () =>

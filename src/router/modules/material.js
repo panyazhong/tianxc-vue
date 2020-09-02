@@ -5,7 +5,7 @@ const materialRoutes = [
     component: layout,
     meta: {
       title: '资料',
-      icon: 'el-icon-menu',
+      icon: 'el-icon-document',
     },
     children: [
       {
@@ -28,6 +28,19 @@ const materialRoutes = [
         component: () =>
           import(
             /* webpackChunkName: "about" */ '../../views/Material/Download'
+          ),
+      },
+
+      {
+        path: 'yellowcard',
+        name: 'YellowCard',
+        meta: {
+          roles: ['admin', 'user'],
+          title: '红黄牌',
+        },
+        component: () =>
+          import(
+            /* webpackChunkName: "about" */ '../../views/Material/YellowCardStatistics'
           ),
       },
     ],

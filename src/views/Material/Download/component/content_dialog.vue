@@ -13,7 +13,11 @@
           :key="key"
           :label="item"
           :prop="item"
-        ></el-table-column>
+        >
+          <template slot-scope="scope">
+            {{ scope.row[item] }}
+          </template>
+        </el-table-column>
       </el-table>
     </el-dialog>
   </div>
