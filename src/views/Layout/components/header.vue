@@ -9,7 +9,7 @@
       >
       <div v-else>
         <span class="el-dropdown-link">
-          {{ user.username }}
+          {{ user.realname }}
         </span>
         <el-button type="text" @click="handleLogout">注销</el-button>
       </div>

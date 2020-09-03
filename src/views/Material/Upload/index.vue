@@ -2,6 +2,17 @@
   <div>
     <page-title></page-title>
     <div class="upload">
+      <div class="statistics-month">
+        <span>统计表格月份</span>
+        <el-date-picker
+          v-model="ststistics_month"
+          size="mini"
+          type="month"
+          placeholder="选择月"
+        >
+        </el-date-picker>
+      </div>
+
       <el-upload
         drag
         action=""
@@ -34,6 +45,7 @@ import { resolve } from 'url';
 export default {
   data() {
     return {
+      ststistics_month: '',
       file: null,
       fileList: [],
       fileTypeList: [
@@ -73,6 +85,14 @@ export default {
     },
     // 重写上传文件方法
     async httpRequest(params) {
+      if (!this.ststistics_month) {
+        this.$message({
+          message: '选择统计月份',
+          type: 'warning',
+          duration: 3000,
+        });
+        return;
+      }
       const { file } = params;
 
       const excelJSON = await this.readFileAsJson(file);
@@ -81,6 +101,7 @@ export default {
 
       const fd = new FormData();
       fd.append('file', file);
+      fd.append('ststistics_month', new Date(this.ststistics_month).getTime());
       fd.append('upload_excel_titles', JSON.stringify(excelTitles));
       fd.append('upload_excel_content', JSON.stringify(excelJSON));
 
@@ -113,6 +134,14 @@ export default {
 .upload {
   width: 360px;
   margin: 20px auto;
+  .statistics-month {
+    margin-bottom: 10px;
+    color: #666;
+    font-size: 14px;
+    span {
+      margin-right: 10px;
+    }
+  }
   .tips {
     color: #f56c6c;
   }

@@ -1,5 +1,5 @@
-import { login, getUserInfo } from '@/api/user'
-import { setToken, removeToken } from '@/utils/cookie'
+import { login, getUserInfo } from '@/api/user';
+import { setToken, removeToken } from '@/utils/cookie';
 
 const user = {
   state: {
@@ -7,33 +7,34 @@ const user = {
   },
   mutations: {
     SET_USER: (state, user) => {
-      state.user = user
+      state.user = user;
     },
   },
   actions: {
     async handleLogin({ commit }, form) {
-      const res = await login(form)
+      const res = await login(form);
 
-      const { token } = res.data
+      const { token } = res.data;
 
-      setToken(token)
+      setToken(token);
     },
     async HandleLogout() {
-      removeToken()
+      removeToken();
 
-      location.reload()
+      location.reload();
     },
     async GetUserInfo({ commit }) {
-      const { data } = await getUserInfo()
+      const { data } = await getUserInfo();
 
       const user = {
         username: data.username,
+        realname: data.realname,
         role: data.role.role_name,
-      }
+      };
 
-      commit('SET_USER', user)
+      commit('SET_USER', user);
     },
   },
-}
+};
 
-export default user
+export default user;
