@@ -1,7 +1,7 @@
 <template>
   <div class="header-box">
-    <div>
-      Logo
+    <div class="logo">
+      <img src="@/assets/favicon.png" alt="" />
     </div>
     <div>
       <el-button @click="handleLogin" type="text" v-if="!user.username"
@@ -62,5 +62,11 @@ export default {
   z-index: 99;
   border-bottom: 1px solid #ccc;
   background-color: #fff;
+  .logo {
+    height: 60px;
+    img {
+      height: 100%;
+    }
+  }
 }
 </style>

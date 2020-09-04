@@ -1,28 +1,58 @@
 <template>
   <div class="">
     <page-title></page-title>
-    <line-chart :height="height"></line-chart>
+    <div>
+      <filter-table @get-rank-list="getRankList"></filter-table>
+      <line-chart
+        class="line"
+        :height="height"
+        :lineData="lineData"
+      ></line-chart>
+    </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
 import pageTitle from '@/components/pageTitle'
+import filterTable from './components/filter'
 import lineChart from './components/echarts'
+
+import { getRank } from '@/api/rank'
 export default {
   data() {
     return {
       width: '600px',
-      height: '400px'
+      height: '400px',
+      lineData: []
     }
   },
   components: {
     pageTitle,
-    lineChart
+    lineChart,
+    filterTable
+  },
+  created() {
+    this.getRankList()
   },
   methods: {
+    async getRankList(p) {
+      try {
+        const params = {
+          ...p
+        }
+        const {data} = await getRank(params)
+        this.lineData = data
+      } catch (error) {
 
+      }
+
+    }
   }
 }
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.line {
+  margin-top: 20px;
+}
+</style>

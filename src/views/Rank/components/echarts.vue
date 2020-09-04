@@ -1,49 +1,85 @@
 <template>
-  <div id="line-chart" :style="{ height: height }"></div>
+  <div>
+    <div id="line-chart" :style="{ height: height }"></div>
+  </div>
 </template>
 
 <script>
-import echarts from 'echarts'
+import echarts from 'echarts';
 export default {
   data() {
-    return {}
+    return {
+      myChart: '',
+    };
   },
   props: {
     width: {},
     height: {},
+    lineData: {},
   },
   mounted() {
-    this.initChart()
+    this.initChart();
+  },
+  watch: {
+    lineData: {
+      deep: true,
+      handler() {
+        this.changeChart();
+      },
+    },
   },
   methods: {
     initChart() {
-      let myChart = echarts.init(document.getElementById('line-chart'))
+      this.myChart = echarts.init(document.getElementById('line-chart'));
 
       let option = {
         title: {
-          text: 'ECharts 入门示例',
+          text: '年度排行统计',
         },
         tooltip: {},
         legend: {
-          data: ['销量'],
+          data: ['排名'],
+        },
+        grid: {
+          left: 30,
+          right: 30,
+          top: 80,
         },
         xAxis: {
-          data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
+          data: [],
         },
-        yAxis: {},
-        series: [
-          {
-            name: '销量',
-            type: 'bar',
-            data: [5, 20, 36, 10, 10, 20],
-          },
-        ],
-      }
+        yAxis: {
+          minInterval: 1,
+          max: 59,
+          name: '名次',
+        },
+        series: [],
+      };
       // 使用刚指定的配置项和数据显示图表。
-      myChart.setOption(option)
+      this.myChart.setOption(option);
+    },
+    changeChart() {
+      let options = this.myChart.getOption(),
+        { series, xAxis } = options;
+
+      (series = []), (xAxis = []);
+      xAxis.push({
+        boundaryGap: false,
+        data: this.lineData.map((item) => `${item.rank_time}月`),
+      });
+      series.push({
+        name: '排名',
+        type: 'line',
+        barMaxWidth: 30,
+        data: this.lineData.map((item) => item.rank),
+      });
+      options.series = series;
+      options.xAxis = xAxis;
+
+      this.myChart.setOption(options);
     },
   },
-}
+};
 </script>
 
 <style scoped lang="scss">

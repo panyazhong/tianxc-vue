@@ -3,6 +3,7 @@
     <div class="page-title" v-if="pageTitle">
       <span>{{ pageTitle }}</span>
     </div>
+    <el-divider></el-divider>
   </div>
 </template>
 

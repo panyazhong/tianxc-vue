@@ -12,7 +12,7 @@ const materialRoutes = [
         path: 'upload',
         name: 'Upload',
         meta: {
-          roles: ['admin', 'user'],
+          roles: ['admin'],
           title: '上传',
         },
         component: () =>
