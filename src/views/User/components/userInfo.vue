@@ -1,32 +1,45 @@
 <template>
   <div class="form-container">
-    <el-form label-width="80px" size="mini" :model="formLabelAlign">
+    <el-form label-width="80px" size="mini">
       <el-form-item label="用户名">
-        <span>name</span>
+        <span>{{ user.username }}</span>
       </el-form-item>
       <el-form-item label="姓名">
-        <el-input v-model="formLabelAlign.region"></el-input>
+        <span>{{ user.realname }}</span>
       </el-form-item>
       <el-form-item label="角色">
-        <el-input v-model="formLabelAlign.type"></el-input>
+        <span>{{ user.role.role_name }}</span>
+      </el-form-item>
+      <el-form-item label="注册时间">
+        <span>{{ timeFormat(new Date(user.created).getTime()) }}</span>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+import { getUserInfo } from '@/api/user'
+import { timeFormat } from '@/utils/time'
 export default {
   data() {
     return {
-      formLabelAlign: {
-        name: '',
-        region: '',
-        type: ''
-      }
+      user: {role: {}},
+      timeFormat: timeFormat
     }
   },
+  created() {
+    this.getUserInfo()
+  },
   methods: {
+    async getUserInfo() {
+      try {
+        const { data } = await getUserInfo()
+        this.user = data
+      } catch (error) {
 
+      }
+
+    }
   }
 }
 </script>
@@ -34,8 +47,20 @@ export default {
 <style scoped lang="scss">
 .el-form {
   width: 500px;
-  ::v-deep .el-form-item__label {
-    font-size: 13px;
+  .el-form-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    ::v-deep .el-form-item__label {
+      font-size: 13px;
+    }
+    ::v-deep .el-form-item__content {
+      margin-left: 20px !important;
+    }
+    span {
+      font-size: 13px;
+      color: #666;
+    }
   }
 }
 </style>
