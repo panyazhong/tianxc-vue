@@ -1,4 +1,5 @@
-import layout from '@/views/Layout';
+import layout from '@/views/Layout'
+import { getUserInfo } from '../../api/user'
 
 const UserRoutes = [
   {
@@ -6,8 +7,9 @@ const UserRoutes = [
     component: layout,
     children: [
       {
-        path: '/user',
-        component: () => import('@/views/User'),
+        path: '/userInfo',
+        name: 'UserInfo',
+        component: () => import('@/views/UserInfo'),
         meta: {
           title: '个人中心',
           icon: 'el-icon-user',
@@ -16,6 +18,6 @@ const UserRoutes = [
       },
     ],
   },
-];
+]
 
-export default UserRoutes;
+export default UserRoutes

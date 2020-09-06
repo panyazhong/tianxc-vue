@@ -1,40 +1,70 @@
 <template>
-  <div class="">
+  <div>
     <page-title></page-title>
-    <el-tabs v-model="activeName" type="border-card">
-      <el-tab-pane label="个人信息" name="first">
-        <user-info></user-info>
-      </el-tab-pane>
-      <el-tab-pane label="修改密码" name="second">
-        <change-pwd></change-pwd>
-      </el-tab-pane>
-    </el-tabs>
+
+    <filter-table @search-user="getUsers" @add-user="addUser"></filter-table>
+    <user-table :tableData="users" @del-user="delUser"></user-table>
+
+    <user-dialog ref="dialog" @get-user-list="getUsers"></user-dialog>
   </div>
 </template>
 
-<script type="text/ecmascript-6">
+<script>
 import pageTitle from '@/components/pageTitle'
-import userInfo from './components/userInfo'
-import changePwd from './components/changePwd'
+import userTable from './components/user_table'
+import filterTable from './components/filter_table'
+import userDialog from './components/user_dialog'
+import { getUsers, delUser } from '@/api/user'
+
 export default {
   data() {
     return {
-      activeName: "first"
+      users: [],
     }
   },
   components: {
     pageTitle,
-    userInfo,
-    changePwd
+    userTable,
+    filterTable,
+    userDialog,
+  },
+  created() {
+    this.getUsers()
   },
   methods: {
+    async getUsers(username) {
+      try {
+        let data
+        if (username) {
+          const params = {
+            username,
+          }
 
-  }
+          const res = await getUsers(params)
+          data = res.data
+        } else {
+          const res = await getUsers()
+          data = res.data
+        }
+
+        this.users = data
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    addUser() {
+      this.$refs.dialog.open()
+    },
+    async delUser(_id) {
+      try {
+        await delUser({
+          user_id: _id,
+        })
+        this.getUsers()
+      } catch (error) {}
+    },
+  },
 }
 </script>
 
-<style scoped lang="scss">
-.el-tabs {
-  height: 500px;
-}
-</style>
+<style></style>

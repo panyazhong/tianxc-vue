@@ -1,5 +1,5 @@
 export function timeFormat(str, format = '{y}-{m}-{d} {h}:{i}:{s}') {
-  const time = new Date(Number(str));
+  const time = new Date(Number(str))
   const obj = {
     y: time.getFullYear(),
     m: time.getMonth() + 1,
@@ -7,13 +7,13 @@ export function timeFormat(str, format = '{y}-{m}-{d} {h}:{i}:{s}') {
     h: time.getHours(),
     i: time.getMinutes(),
     s: time.getSeconds(),
-  };
+  }
 
   const time_str = format.replace(/{(y|m|d|h|i|s)}/g, (res, key) => {
-    const value = obj[key];
+    const value = obj[key]
 
-    return value < 10 ? `0${value}` : value;
-  });
+    return value < 10 ? `0${value}` : value
+  })
 
-  return time_str;
+  return time_str
 }

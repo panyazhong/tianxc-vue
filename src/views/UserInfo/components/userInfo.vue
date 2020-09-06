@@ -11,7 +11,9 @@
         <span>{{ user.role.role_name }}</span>
       </el-form-item>
       <el-form-item label="注册时间">
-        <span>{{ timeFormat(new Date(user.created).getTime()) }}</span>
+        <span>{{
+          user.created ? timeFormat(new Date(user.created).getTime()) : ''
+        }}</span>
       </el-form-item>
     </el-form>
   </div>
