@@ -23,6 +23,7 @@
             v-model="loginForm.password"
             placeholder="password"
             autocomplete="off"
+            @keyup.enter.native="submitForm('loginForm')"
           ></el-input>
         </el-form-item>
         <el-form-item>
