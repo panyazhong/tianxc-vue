@@ -1,4 +1,4 @@
-import layout from '@/views/Layout'
+import layout from '@/views/Layout';
 
 const userManageRoutes = [
   {
@@ -7,6 +7,7 @@ const userManageRoutes = [
     meta: {
       title: '用戶管理',
       icon: 'el-icon-s-custom',
+      roles: ['admin'],
     },
     children: [
       {
@@ -15,11 +16,11 @@ const userManageRoutes = [
         component: () => import('@/views/User'),
         meta: {
           title: '用戶管理',
-          roles: ['admin', 'user'],
+          roles: ['admin'],
         },
       },
     ],
   },
-]
+];
 
-export default userManageRoutes
+export default userManageRoutes;
