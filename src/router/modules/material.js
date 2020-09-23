@@ -1,50 +1,26 @@
 import layout from '@/views/Layout';
-const materialRoutes = [
+
+const MaterialRoutes = [
   {
     path: '/material',
     component: layout,
     meta: {
-      title: '资料',
-      icon: 'el-icon-document',
+      title: '应知应会',
+      roles: ['admin', 'user'],
+      icon: 'el-icon-download',
     },
     children: [
       {
-        path: 'upload',
-        name: 'Upload',
-        meta: {
-          roles: ['admin'],
-          title: '上传',
-        },
-        component: () =>
-          import(/* webpackChunkName: "about" */ '../../views/Material/Upload'),
-      },
-      {
         path: 'download',
-        name: 'Download',
+        name: 'Rank',
+        component: () => import('@/views/Rank'),
         meta: {
-          roles: ['admin', 'user'],
           title: '下载',
-        },
-        component: () =>
-          import(
-            /* webpackChunkName: "about" */ '../../views/Material/Download'
-          ),
-      },
-
-      {
-        path: 'yellowcard',
-        name: 'YellowCard',
-        meta: {
           roles: ['admin', 'user'],
-          title: '红黄牌',
         },
-        component: () =>
-          import(
-            /* webpackChunkName: "about" */ '../../views/Material/YellowCardStatistics'
-          ),
       },
     ],
   },
 ];
 
-export default materialRoutes;
+export default MaterialRoutes;

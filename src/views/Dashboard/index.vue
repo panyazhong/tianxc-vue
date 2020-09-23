@@ -1,7 +1,9 @@
 <template>
   <div class="">
     <page-title></page-title>
-    dahsn
+    <div>
+      <img src="@/assets/dashboard.png" style="width: 80%" alt="" />
+    </div>
   </div>
 </template>
 

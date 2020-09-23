@@ -2,12 +2,14 @@
   <div class="">
     <page-title></page-title>
     <div>
-      <filter-table @get-rank-list="getRankList"></filter-table>
-      <line-chart
+      <!-- <filter-table @get-rank-list="getRankList"></filter-table> -->
+
+      <el-alert title="资料正在上传中...请稍后..." type="warning"> </el-alert>
+      <!-- <line-chart
         class="line"
         :height="height"
         :lineData="lineData"
-      ></line-chart>
+      ></line-chart> -->
     </div>
   </div>
 </template>

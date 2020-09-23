@@ -1,12 +1,12 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import layout from '@/views/Layout'
-import materialRoutes from './modules/material'
-import RankRoutes from './modules/rank'
-import UserRoutes from './modules/user'
-import userManageRoutes from './modules/userManager'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import layout from '@/views/Layout';
+import cardRoutes from './modules/card';
+import MaterialRoutes from './modules/material';
+import UserRoutes from './modules/user';
+import userManageRoutes from './modules/userManager';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const staticRoutes = [
   {
@@ -22,7 +22,7 @@ const staticRoutes = [
     },
     component: () => import('../views/Login'),
   },
-]
+];
 
 export const asyncRoutes = [
   {
@@ -42,19 +42,19 @@ export const asyncRoutes = [
       },
     ],
   },
-  ...materialRoutes,
-  ...RankRoutes,
+  ...cardRoutes,
+  ...MaterialRoutes,
   ...userManageRoutes,
   ...UserRoutes,
-]
+];
 
 const createRouter = () =>
   new VueRouter({
     mode: 'hash',
     routes: staticRoutes,
-  })
+  });
 
-const router = createRouter()
+const router = createRouter();
 
 // export function resetRouter() {
 //   const newRouter = createRouter();
@@ -66,4 +66,4 @@ const router = createRouter()
 //   router.addRoutes(params);
 // };
 
-export default router
+export default router;
