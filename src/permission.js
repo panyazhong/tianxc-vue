@@ -9,6 +9,8 @@ router.beforeEach(async (to, from, next) => {
   NProgress.start();
   const { title } = to.meta;
 
+  store.dispatch('toggleDevice');
+
   document.title = title;
 
   const token = getToken();

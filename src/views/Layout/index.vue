@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div :class="device === 'mobile' ? 'mobile' : 'pc'">
     <header-com></header-com>
     <menu-com></menu-com>
     <transition name="content" mode="out-in">
@@ -11,6 +11,7 @@
 <script type="text/ecmascript-6">
 import HeaderCom from './components/header'
 import MenuCom from './components/menu'
+import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
@@ -20,6 +21,9 @@ export default {
   components: {
     HeaderCom,
     MenuCom
+  },
+  computed: {
+    ...mapGetters(['device'])
   },
   methods: {
 
@@ -32,6 +36,11 @@ export default {
   padding: 80px 20px 20px 200px;
   height: 100vh;
   box-sizing: border-box;
+}
+.mobile {
+  .content {
+    padding: 80px 20px 20px 56px;
+  }
 }
 .content-enter-active,
 .content-leave-active {

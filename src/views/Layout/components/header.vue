@@ -4,12 +4,12 @@
       <img src="@/assets/favicon.png" alt="" />
     </div>
     <div>
-      <el-button @click="handleLogin" type="text" v-if="!user.username"
+      <el-button @click="handleLogin" type="text" v-if="!user.account"
         >点击登录</el-button
       >
       <div v-else>
         <span class="el-dropdown-link">
-          {{ user.realname }}
+          {{ user.username }}
         </span>
         <el-button type="text" @click="handleLogout">注销</el-button>
       </div>

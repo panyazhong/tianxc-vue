@@ -8,6 +8,11 @@ import userManageRoutes from './modules/userManager';
 
 Vue.use(VueRouter);
 
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch((err) => err);
+};
+
 const staticRoutes = [
   {
     path: '/',
@@ -55,15 +60,5 @@ const createRouter = () =>
   });
 
 const router = createRouter();
-
-// export function resetRouter() {
-//   const newRouter = createRouter();
-//   router.matcher = newRouter.matcher; // reset router
-// }
-
-// router.$addRoutes = (params) => {
-//   resetRouter();
-//   router.addRoutes(params);
-// };
 
 export default router;

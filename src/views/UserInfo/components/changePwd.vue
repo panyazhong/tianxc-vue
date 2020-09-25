@@ -6,7 +6,7 @@
       :rules="rules"
       size="mini"
       ref="ruleForm"
-      label-width="100px"
+      label-width="80px"
       class="demo-ruleForm"
     >
       <el-form-item label="原密码" prop="originPwd">
@@ -113,6 +113,11 @@ export default {
   width: 500px;
   ::v-deep .el-form-item__label {
     font-size: 13px;
+  }
+}
+.mobile {
+  .el-form {
+    width: 250px;
   }
 }
 </style>

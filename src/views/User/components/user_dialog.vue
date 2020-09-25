@@ -10,11 +10,11 @@
         :model="userForm"
         :rules="rules"
       >
-        <el-form-item label="账号" prop="username">
-          <el-input type="text" v-model="userForm.username"></el-input>
+        <el-form-item label="账号" prop="account">
+          <el-input type="text" v-model="userForm.account"></el-input>
         </el-form-item>
-        <el-form-item label="姓名" prop="realname">
-          <el-input type="text" v-model="userForm.realname"></el-input>
+        <el-form-item label="姓名" prop="username">
+          <el-input type="text" v-model="userForm.username"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="password">
           <el-input type="text" v-model="userForm.password"></el-input>
@@ -40,61 +40,61 @@
 </template>
 
 <script>
-import { register, getRoles } from '@/api/user'
+import { register, getRoles } from '@/api/user';
 export default {
   data() {
     return {
       visible: false,
       roles: [],
       userForm: {
+        account: '',
         username: '',
-        realname: '',
         password: '',
         role: '',
       },
       rules: {
-        username: [{ required: true, message: '请填写账号', trigger: 'blur' }],
-        realname: [{ required: true, message: '请填写姓名', trigger: 'blur' }],
+        account: [{ required: true, message: '请填写账号', trigger: 'blur' }],
+        username: [{ required: true, message: '请填写姓名', trigger: 'blur' }],
         password: [{ required: true, message: '请填写密码', trigger: 'blur' }],
         role: [{ required: true, message: '请选择角色', trigger: 'change' }],
       },
-    }
+    };
   },
   created() {
-    this.getRoles()
+    this.getRoles();
   },
   watch: {
     visible(val) {
       if (val) {
-        this.getRoles()
+        this.getRoles();
       }
     },
   },
   methods: {
     async getRoles() {
-      const { data } = await getRoles()
+      const { data } = await getRoles();
 
-      this.roles = data
+      this.roles = data;
     },
     async submit() {
       try {
-        console.log(this.userForm)
-        await this.$refs.form.validateField()
+        console.log(this.userForm);
+        await this.$refs.form.validateField();
 
-        await register(this.userForm)
-        this.$refs.form.resetFields()
-        this.close()
-        this.$emit('get-user-list')
+        await register(this.userForm);
+        this.$refs.form.resetFields();
+        this.close();
+        this.$emit('get-user-list');
       } catch (error) {}
     },
     open() {
-      this.visible = true
+      this.visible = true;
     },
     close() {
-      this.visible = false
+      this.visible = false;
     },
   },
-}
+};
 </script>
 
 <style lang="scss" scoped>

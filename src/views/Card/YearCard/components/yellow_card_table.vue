@@ -9,7 +9,7 @@
       </el-table-column>
       <el-table-column label="上传用户" prop="uploador">
         <template slot-scope="scope">
-          <span>{{ scope.row.uploador.realname }}</span>
+          <span>{{ scope.row.uploador.username }}</span>
         </template>
       </el-table-column>
       <el-table-column label="图片预览">

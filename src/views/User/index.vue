@@ -10,17 +10,17 @@
 </template>
 
 <script>
-import pageTitle from '@/components/pageTitle'
-import userTable from './components/user_table'
-import filterTable from './components/filter_table'
-import userDialog from './components/user_dialog'
-import { getUsers, delUser } from '@/api/user'
+import pageTitle from '@/components/pageTitle';
+import userTable from './components/user_table';
+import filterTable from './components/filter_table';
+import userDialog from './components/user_dialog';
+import { getUsers, delUser } from '@/api/user';
 
 export default {
   data() {
     return {
       users: [],
-    }
+    };
   },
   components: {
     pageTitle,
@@ -29,42 +29,42 @@ export default {
     userDialog,
   },
   created() {
-    this.getUsers()
+    this.getUsers();
   },
   methods: {
-    async getUsers(username) {
+    async getUsers(account) {
       try {
-        let data
-        if (username) {
+        let data;
+        if (account) {
           const params = {
-            username,
-          }
+            account,
+          };
 
-          const res = await getUsers(params)
-          data = res.data
+          const res = await getUsers(params);
+          data = res.data;
         } else {
-          const res = await getUsers()
-          data = res.data
+          const res = await getUsers();
+          data = res.data;
         }
 
-        this.users = data
+        this.users = data;
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     },
     addUser() {
-      this.$refs.dialog.open()
+      this.$refs.dialog.open();
     },
     async delUser(_id) {
       try {
         await delUser({
           user_id: _id,
-        })
-        this.getUsers()
+        });
+        this.getUsers();
       } catch (error) {}
     },
   },
-}
+};
 </script>
 
 <style></style>

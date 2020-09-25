@@ -9,7 +9,7 @@
       <el-table-column prop="upload_name" label="文件名"> </el-table-column>
       <el-table-column label="上传用户">
         <template slot-scope="scope">
-          {{ scope.row.upload_user.username }}
+          {{ scope.row.upload_user.account }}
         </template>
       </el-table-column>
 

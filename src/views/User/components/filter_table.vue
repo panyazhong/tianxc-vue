@@ -4,7 +4,7 @@
       <el-input
         placeholder="用户名"
         size="mini"
-        v-model="username"
+        v-model="account"
         clearable
       ></el-input>
 
@@ -20,18 +20,18 @@
 export default {
   data() {
     return {
-      username: '',
-    }
+      account: '',
+    };
   },
   methods: {
     addUser() {
-      this.$emit('add-user')
+      this.$emit('add-user');
     },
     searchUser() {
-      this.$emit('search-user', this.username)
+      this.$emit('search-user', this.account);
     },
   },
-}
+};
 </script>
 
 <style scoped lang="scss">

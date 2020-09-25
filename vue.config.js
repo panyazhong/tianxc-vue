@@ -8,4 +8,10 @@ module.exports = {
       },
     },
   },
-}
+  pages: {
+    index: {
+      entry: 'src/main.js',
+      title: '红黄牌实时查询',
+    },
+  },
+};

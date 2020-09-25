@@ -27,8 +27,8 @@ const user = {
       const { data } = await getUserInfo();
 
       const user = {
+        account: data.account,
         username: data.username,
-        realname: data.realname,
         role: data.role.role_name,
       };
 

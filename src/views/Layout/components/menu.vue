@@ -4,6 +4,7 @@
       :default-active="defaultKey"
       class="el-menu-vertical-demo"
       background-color="#2a3947"
+      :collapse="device === 'mobile' ? true : false"
       text-color="#fff"
       active-text-color="#4699ff"
     >
@@ -54,7 +55,8 @@ export default {
       return this.$route.path
     },
     ...mapGetters([
-      'accessedRoutes'
+      'accessedRoutes',
+      'device'
     ])
   },
   methods: {
@@ -82,6 +84,26 @@ export default {
     .el-menu-item,
     .el-submenu {
       text-align: left;
+    }
+  }
+}
+.mobile {
+  .el-submenu {
+    overflow: hidden;
+    ::v-deep .el-submenu__title {
+      padding: 0px 8px !important;
+    }
+  }
+  .menu-box {
+    width: 36px;
+    .el-menu--collapse {
+      width: 36px;
+    }
+    ::v-deep .el-submenu__icon-arrow {
+      display: none !important;
+    }
+    ::v-deep .el-tooltip {
+      padding-left: 8px !important;
     }
   }
 }

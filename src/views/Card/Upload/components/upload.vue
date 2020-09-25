@@ -23,6 +23,7 @@
 <script type="text/ecmascript-6">
 import { upload } from '@/api/upload';
 import { uploadCard } from '@/api/yellowcard'
+import XLSX from 'xlsx'
 export default {
   data() {
     return {
@@ -105,6 +106,7 @@ export default {
     },
     // 上传图片
     async uploadImage(params) {
+      if (!this.checkDate()) return
       const { file } = params
       let fd = new FormData()
       fd.append('file', file)

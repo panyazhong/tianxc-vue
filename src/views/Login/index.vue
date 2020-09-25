@@ -1,5 +1,5 @@
 <template>
-  <div class="login-page">
+  <div class="login-page" :class="device === 'mobile' ? 'mobile' : 'pc'">
     <div class="login-contain">
       <div class="login-left">
         <p class="main-title">创新，与智慧同行</p>
@@ -18,12 +18,12 @@
           ref="loginForm"
           class="demo-loginForm"
         >
-          <el-form-item label="" prop="username">
+          <el-form-item label="" prop="account">
             <el-input
               type="password"
-              v-model="loginForm.username"
+              v-model="loginForm.account"
               autocomplete="off"
-              placeholder="username"
+              placeholder="account"
             ></el-input>
           </el-form-item>
           <el-form-item label="" prop="password">
@@ -47,22 +47,26 @@
 </template>
 
 <script type="text/ecmascript-6">
+import {mapGetters} from 'vuex'
 export default {
   data() {
     return {
       loginForm: {
-        username: '',
+        account: '',
         password: ''
       },
       rules: {
-        username: [
+        account: [
           { required: true, trigger: 'blur', message: '请填写用户名' }
         ],
         password: [
           { required: true, trigger: 'blur', message: '请填写密码' }
         ],
-      }
+      },
     }
+  },
+  computed: {
+    ...mapGetters(['device'])
   },
   methods: {
     async submitForm(formName) {
@@ -148,6 +152,14 @@ export default {
         background-color: rgba(236, 49, 60, 1);
         border: none;
       }
+    }
+  }
+}
+.mobile {
+  .login-contain {
+    width: 300px;
+    .login-left {
+      display: none;
     }
   }
 }

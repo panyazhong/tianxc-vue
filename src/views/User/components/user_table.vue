@@ -1,8 +1,8 @@
 <template>
   <div>
     <el-table border :data="tableData" size="mini">
-      <el-table-column label="账号" prop="username"></el-table-column>
-      <el-table-column label="用户名" prop="realname"></el-table-column>
+      <el-table-column label="账号" prop="account"></el-table-column>
+      <el-table-column label="用户名" prop="username"></el-table-column>
       <el-table-column label="创建时间" prop="created">
         <template slot-scope="scope">
           {{ scope.row.created ? timeFormat(new Date(scope.row.created)) : '' }}
@@ -25,12 +25,12 @@
 </template>
 
 <script>
-import { timeFormat } from '@/utils/time'
+import { timeFormat } from '@/utils/time';
 export default {
   data() {
     return {
       timeFormat: timeFormat,
-    }
+    };
   },
   props: {
     tableData: {},
@@ -38,12 +38,12 @@ export default {
   methods: {
     async delUser(_id) {
       try {
-        await this.$confirm('确定删除该用户？', '提示', { type: 'warning' })
-        this.$emit('del-user', _id)
+        await this.$confirm('确定删除该用户？', '提示', { type: 'warning' });
+        this.$emit('del-user', _id);
       } catch (error) {}
     },
   },
-}
+};
 </script>
 
 <style></style>
