@@ -11,7 +11,7 @@ module.exports = {
   pages: {
     index: {
       entry: 'src/main.js',
-      title: '红黄牌实时查询',
+      title: '渠道人员综合支撑平台',
     },
   },
 };

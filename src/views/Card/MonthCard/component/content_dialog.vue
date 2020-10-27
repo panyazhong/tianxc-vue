@@ -20,7 +20,12 @@
           :prop="item"
         >
           <template slot-scope="scope">
-            {{ scope.row[item] }}
+            {{
+              typeof scope.row[item] === 'number' &&
+              String(scope.row[item]).includes('.')
+                ? `${scope.row[item].toFixed(2) * 100}%`
+                : scope.row[item]
+            }}
           </template>
         </el-table-column>
       </el-table>

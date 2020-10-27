@@ -15,7 +15,7 @@ const MaterialRoutes = [
         name: 'Rank',
         component: () => import('@/views/Material/Download'),
         meta: {
-          title: '资料下载',
+          title: '经验分享阅读区',
           roles: ['admin', 'user'],
         },
       },
@@ -24,7 +24,7 @@ const MaterialRoutes = [
         name: 'MaterialUpload',
         component: () => import('@/views/Material/Upload'),
         meta: {
-          title: '资料上传',
+          title: '经验分享上传区',
           roles: ['admin', 'user'],
         },
       },

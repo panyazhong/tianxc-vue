@@ -28,6 +28,15 @@
           >
             查看
           </el-button>
+
+          <el-button
+            type="text"
+            size="mini"
+            v-if="user.role === 'admin'"
+            @click="handleDelContent(scope.row._id)"
+          >
+            删除
+          </el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -36,6 +45,9 @@
 
 <script type="text/ecmascript-6">
 import { timeFormat } from "@/utils/time"
+import { mapGetters } from 'vuex'
+
+import { delExcelContent } from '@/api/download'
 export default {
   data() {
     return {
@@ -50,9 +62,23 @@ export default {
       }
     }
   },
+  computed: {
+    ...mapGetters([
+      'user'
+    ])
+  },
   methods: {
     handleGetContent(_id) {
       this.$emit('handle-get-content', _id)
+    },
+    async handleDelContent(_id) {
+      await this.$confirm('确定删除该内容？', '提示', {
+        type: 'warning'
+      })
+
+      await delExcelContent(_id)
+
+      this.$emit('refresh-list')
     }
   }
 }

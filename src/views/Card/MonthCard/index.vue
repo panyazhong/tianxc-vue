@@ -3,6 +3,7 @@
     <page-title></page-title>
     <download-table
       :table-data="excelList"
+      @refresh-list="getExcelList"
       v-on:handle-get-content="ViewExcelContent"
     ></download-table>
 
@@ -31,10 +32,13 @@ export default {
     pageTitle
   },
   async created() {
-    const res = await getExcelList()
-    this.excelList = res.data
+    this.getExcelList()
   },
   methods: {
+    async getExcelList() {
+      const {data} = await getExcelList()
+      this.excelList = data
+    },
     async ViewExcelContent(_id) {
       try {
         const {data} = await getExcelContent(_id)

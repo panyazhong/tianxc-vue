@@ -20,7 +20,7 @@
         >
           <el-form-item label="" prop="account">
             <el-input
-              type="password"
+              type="text"
               v-model="loginForm.account"
               autocomplete="off"
               placeholder="account"
