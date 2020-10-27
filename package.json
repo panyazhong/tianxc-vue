@@ -12,6 +12,7 @@
     "echarts": "^4.9.0",
     "element-ui": "^2.13.2",
     "js-cookie": "^2.2.1",
+    "mammoth": "^1.4.13",
     "nprogress": "^0.2.0",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",

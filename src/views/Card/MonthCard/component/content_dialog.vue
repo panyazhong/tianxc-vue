@@ -1,6 +1,11 @@
 <template>
   <div class="">
-    <el-dialog title="详情" :visible="visible" :before-close="close">
+    <el-dialog
+      title="详情"
+      :visible="visible"
+      :before-close="close"
+      width="90%"
+    >
       <h3>{{ dialogContent.upload_name }}</h3>
       <el-table
         :data="dialogContent.upload_excel_content"

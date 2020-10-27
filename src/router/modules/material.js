@@ -5,7 +5,7 @@ const MaterialRoutes = [
     path: '/material',
     component: layout,
     meta: {
-      title: '应知应会',
+      title: '经验分享专区',
       roles: ['admin', 'user'],
       icon: 'el-icon-download',
     },
@@ -13,9 +13,18 @@ const MaterialRoutes = [
       {
         path: 'download',
         name: 'Rank',
-        component: () => import('@/views/Rank'),
+        component: () => import('@/views/Material/Download'),
         meta: {
-          title: '下载',
+          title: '资料下载',
+          roles: ['admin', 'user'],
+        },
+      },
+      {
+        path: 'upload',
+        name: 'MaterialUpload',
+        component: () => import('@/views/Material/Upload'),
+        meta: {
+          title: '资料上传',
           roles: ['admin', 'user'],
         },
       },
