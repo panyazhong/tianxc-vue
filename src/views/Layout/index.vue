@@ -1,5 +1,5 @@
 <template>
-  <div :class="device === 'mobile' ? 'mobile' : 'pc'">
+  <div :class="device === 'pc' ? 'pc' : 'mobile'">
     <header-com></header-com>
     <menu-com></menu-com>
     <transition name="content" mode="out-in">
@@ -37,7 +37,8 @@ export default {
   height: 100vh;
   box-sizing: border-box;
 }
-.mobile {
+.mobile,
+.pad {
   .content {
     padding: 80px 20px 20px 56px;
   }

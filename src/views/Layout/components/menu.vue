@@ -4,7 +4,7 @@
       :default-active="defaultKey"
       class="el-menu-vertical-demo"
       background-color="#2a3947"
-      :collapse="device === 'mobile' ? true : false"
+      :collapse="device === 'pc' ? false : true"
       text-color="#fff"
       active-text-color="#4699ff"
     >
