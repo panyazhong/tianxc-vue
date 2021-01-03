@@ -6,6 +6,7 @@ import MaterialRoutes from './modules/material';
 import UserRoutes from './modules/user';
 import userManageRoutes from './modules/userManager';
 import videoStudyRoutes from './modules/videoStudy';
+import SignRoutes from './modules/sign';
 
 Vue.use(VueRouter);
 
@@ -52,6 +53,7 @@ export const asyncRoutes = [
   ...MaterialRoutes,
   ...videoStudyRoutes,
   ...userManageRoutes,
+  ...SignRoutes,
   ...UserRoutes,
 ];
 
