@@ -2,7 +2,7 @@ import request from '@/utils/request';
 
 export function upload(data) {
   return request({
-    url: '/api/sign/upload',
+    url: '/api/sign/uploadSign',
     method: 'post',
     data: data,
   });

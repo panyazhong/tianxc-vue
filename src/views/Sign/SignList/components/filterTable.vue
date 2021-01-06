@@ -5,6 +5,7 @@
       size="mini"
       v-model="name"
       placeholder="名称"
+      clearable
     ></el-input>
     <el-button type="primary" size="mini" @click="searchSign">搜索</el-button>
   </el-row>

@@ -9,11 +9,11 @@
       <el-image
         :src="item.sign_url"
         class="image"
-        :preview-src-list="srcList"
+        :preview-src-list="preList"
       ></el-image>
       <div style="padding: 14px;">
         <div class="bottom clearfix">
-          <time class="name">{{ item.name }}</time>
+          <time class="name">{{ item.sign_name }}</time>
           <el-button type="text" class="button" @click="deleteSign(item._id)"
             >删除</el-button
           >
@@ -26,15 +26,16 @@
 <script>
 export default {
   data() {
-    return {
-      currentDate: 'dapan',
-      srcList: [
-        'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
-      ],
-    };
+    return {};
   },
   props: {
     list: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+    preList: {
       type: Array,
       default() {
         return [];
@@ -72,7 +73,16 @@ export default {
 
 .image {
   width: 100%;
-  display: block;
+  text-align: center;
+  background: #f5f5f5;
+  border-bottom: 1px solid #f2f2f2;
+}
+.image img {
+  height: 150px;
+  width: auto !important;
+}
+.el-image-viewer__canvas img {
+  height: auto;
 }
 
 .clearfix:before,

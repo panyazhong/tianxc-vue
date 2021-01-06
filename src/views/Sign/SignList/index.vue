@@ -3,7 +3,11 @@
     <page-title></page-title>
     <filter-table @search-name="searchName"></filter-table>
     <el-divider></el-divider>
-    <sign-list :list="list" @delete-sign="deleteSign"></sign-list>
+    <sign-list
+      :list="list"
+      :pre-list="preList"
+      @delete-sign="deleteSign"
+    ></sign-list>
   </div>
 </template>
 
@@ -16,13 +20,9 @@ export default {
   data() {
     return {
       list: [
-        {
-            _id: 2131231,
-            name: 'dapan',
-            sign_url:
-              'https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png',
-          },
-      ]
+
+      ],
+      preList: []
     }
   },
   components: {
@@ -38,15 +38,15 @@ export default {
       try {
         const {data} = await getSignList(params)
         this.list = data
+        this.preList = data.map(item => item.sign_url)
       } catch (error) {
 
       }
     },
 
-    searchName(name) {
-      console.log(name)
+    searchName(sign_name) {
       const params = {
-        name
+        sign_name
       }
       this.getSignList(params)
     },
@@ -60,6 +60,8 @@ export default {
           type: 'warning'
         })
         await deleteSignById(params)
+
+        this.getSignList()
       } catch (error) {
 
       }
