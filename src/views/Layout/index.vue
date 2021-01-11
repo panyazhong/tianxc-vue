@@ -15,18 +15,41 @@ import { mapGetters } from 'vuex'
 export default {
   data() {
     return {
-
+      loadTime: null,
+      leaveTime: null,
     }
   },
   components: {
     HeaderCom,
     MenuCom
   },
+  mounted() {
+    this.loadTime = new Date().getTime()
+    console.log(navigator.sendBeacon)
+    window.onbeforeunload = () => {
+      this.leaveTime = new Date().getTime()
+
+      // 当时间大于3s时才计算用户行为信息
+      if (this.leaveTime - this.loadTime > 3 * 1000) {
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon()
+        } else {
+          this.sendBehavior()
+        }
+      }
+
+      return false
+    }
+  },
   computed: {
     ...mapGetters(['device'])
   },
   methods: {
+    // 上传用户信息
+    sendBeacon() {
 
+    },
+    sendBehavior() {}
   }
 }
 </script>

@@ -1,6 +1,6 @@
 import router from './router';
 import store from './store';
-import { getToken } from './utils/cookie';
+import { getToken, getUserBehavior, setUserBehavior } from './utils/cookie';
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 import { Message } from 'element-ui';
@@ -49,6 +49,21 @@ router.beforeEach(async (to, from, next) => {
   next({ ...to, replace: true });
 });
 
-router.afterEach(() => {
+router.afterEach((to) => {
+  // 路由跳转  记录用户访问模块信息
+
+  const { name } = to;
+  let behaviors = getUserBehavior();
+  behaviors = !behaviors ? {} : JSON.parse(behaviors);
+  if (!behaviors[name]) {
+    behaviors[name] = 0;
+  }
+
+  behaviors[name]++;
+
+  setUserBehavior(JSON.stringify(behaviors));
+
+  console.log(behaviors);
+
   NProgress.done();
 });
