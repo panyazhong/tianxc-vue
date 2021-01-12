@@ -17,13 +17,13 @@ export function removeToken() {
 }
 
 export function setUserBehavior(behaviors) {
-  return JsCookie.set('behavior', behaviors);
+  sessionStorage.setItem('behavior', behaviors);
 }
 
 export function getUserBehavior() {
-  return JsCookie.get('behavior');
+  return sessionStorage.getItem('behavior');
 }
 
 export function removeUserBehavior() {
-  JsCookie.remove('behavior');
+  sessionStorage.removeItem('behavior');
 }
