@@ -12,7 +12,7 @@ const videoStudyRoutes = [
     children: [
       {
         path: 'download',
-        name: 'VideoDownload',
+        name: 'VideoWatching',
         component: () => import('@/views/videoStudy/Download'),
         meta: {
           title: '视频学习观看区',

@@ -10,7 +10,7 @@ const SignRoutes = [
     children: [
       {
         path: 'upload',
-        name: 'Upload',
+        name: 'SignUpload',
         meta: {
           roles: ['admin'],
           title: '用户签名-上传',

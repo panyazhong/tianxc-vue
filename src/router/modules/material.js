@@ -12,7 +12,7 @@ const MaterialRoutes = [
     children: [
       {
         path: 'download',
-        name: 'Rank',
+        name: 'MaterialShare',
         component: () => import('@/views/Material/Download'),
         meta: {
           title: '经验分享阅读区',

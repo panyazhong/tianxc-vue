@@ -7,6 +7,7 @@ import UserRoutes from './modules/user';
 import userManageRoutes from './modules/userManager';
 import videoStudyRoutes from './modules/videoStudy';
 import SignRoutes from './modules/sign';
+import UserPortraitRoutes from './modules/userPortrait';
 
 Vue.use(VueRouter);
 
@@ -55,6 +56,7 @@ export const asyncRoutes = [
   ...userManageRoutes,
   ...SignRoutes,
   ...UserRoutes,
+  ...UserPortraitRoutes,
 ];
 
 const createRouter = () =>
