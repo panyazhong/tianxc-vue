@@ -8,14 +8,8 @@
           {{ moduleName[scope.row.moduleName] }}
         </template>
       </el-table-column>
-      <el-table-column
-        label="模块访问量"
-        prop="moduleVisitNum"
-      ></el-table-column>
-      <el-table-column
-        label="模块访问人数"
-        prop="moduleVisitNum"
-      ></el-table-column>
+      <el-table-column label="模块访问量" prop="visitNum"></el-table-column>
+      <el-table-column label="模块访问人数" prop="visitUsers"></el-table-column>
     </el-table>
   </div>
 </template>
@@ -48,6 +42,8 @@ export default {
 <style scoped lang="scss">
 .module-table {
   padding: 0px 10px;
-  border: 1px solid #444;
+  border: 1px solid #efefef;
+  border-radius: 5px;
+  box-shadow: 0px 0px 5px #efefef;
 }
 </style>

@@ -63,7 +63,5 @@ router.afterEach((to) => {
 
   setUserBehavior(JSON.stringify(behaviors));
 
-  console.log(behaviors);
-
   NProgress.done();
 });

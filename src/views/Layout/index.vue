@@ -16,6 +16,8 @@ import { getToken, getUserBehavior, removeUserBehavior } from '@/utils/cookie'
 
 import { sendBeacon } from '@/api/beacon'
 
+const ENV = process.env.NODE_ENV
+
 export default {
   data() {
     return {
@@ -40,7 +42,7 @@ export default {
           let xhr = new XMLHttpRequest()
           let url = ENV === 'development' ?
             `http://localhost:3000/api/behavior/send` :
-            `/imon/api/v1.0/user/use_information`
+            `/api/behavior/send`
           xhr.open('post', url, false)
           xhr.send(fd)
         }
@@ -49,7 +51,7 @@ export default {
     }
 
     window.addEventListener("unload", (e) => {
-      this.sendBeacon()
+      // this.sendBeacon()
     })
   },
   computed: {
@@ -76,7 +78,9 @@ export default {
         if (this.leaveTime - this.loadTime > 6 * 1000) {
           let fd = this.gengerateFormData(token)
 
-          let url = `http://localhost:3000/api/behavior/send`
+          let url = ENV === 'development' ?
+            `http://localhost:3000/api/behavior/send` :
+            `/api/behavior/send`
           navigator.sendBeacon(url, fd)
           removeUserBehavior()
         }

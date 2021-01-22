@@ -7,3 +7,11 @@ export function getModulesInfo(params) {
     params,
   });
 }
+
+export function getUserInlineTime(params) {
+  return request({
+    url: '/api/behavior/getUserInlineTime',
+    method: 'get',
+    params,
+  });
+}
