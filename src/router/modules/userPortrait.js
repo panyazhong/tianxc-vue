@@ -12,7 +12,7 @@ const UserPortraitRoutes = [
         meta: {
           title: '用户画像',
           icon: 'el-icon-pie-chart',
-          roles: ['admin', 'user'],
+          roles: ['admin'],
         },
       },
     ],

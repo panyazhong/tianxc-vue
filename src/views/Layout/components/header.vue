@@ -11,7 +11,9 @@
         <span class="el-dropdown-link">
           {{ user.username }}
         </span>
-        <el-button type="text" @click="handleLogout">注销</el-button>
+        <el-button type="text" @click="handleLogout" size="mini"
+          >注销</el-button
+        >
       </div>
     </div>
   </div>
@@ -67,6 +69,10 @@ export default {
     img {
       height: 100%;
     }
+  }
+  .el-dropdown-link {
+    font-size: 12px;
+    color: #666;
   }
 }
 </style>

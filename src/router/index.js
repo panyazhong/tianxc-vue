@@ -8,6 +8,7 @@ import userManageRoutes from './modules/userManager';
 import videoStudyRoutes from './modules/videoStudy';
 import SignRoutes from './modules/sign';
 import UserPortraitRoutes from './modules/userPortrait';
+import WageRoutes from './modules/wage';
 
 Vue.use(VueRouter);
 
@@ -57,6 +58,7 @@ export const asyncRoutes = [
   ...SignRoutes,
   ...UserRoutes,
   ...UserPortraitRoutes,
+  ...WageRoutes,
 ];
 
 const createRouter = () =>

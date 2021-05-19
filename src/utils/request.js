@@ -4,8 +4,6 @@ import { Message, MessageBox } from 'element-ui';
 import { getToken } from '@/utils/cookie';
 import store from '@/store';
 
-console.log(process.env);
-
 const request = axios.create({
   baseURL: process.env.VUE_APP_URL,
   timeout: 6000,

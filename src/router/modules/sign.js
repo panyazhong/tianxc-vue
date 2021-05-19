@@ -6,6 +6,7 @@ const SignRoutes = [
     meta: {
       title: '用户签名',
       icon: 'el-icon-postcard',
+      roles: ['admin'],
     },
     children: [
       {
