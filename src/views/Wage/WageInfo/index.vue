@@ -3,8 +3,11 @@
     <page-title></page-title>
 
     <!-- <div class="wage" v-for="item in 10" :key="item"> -->
-    <title-info @searchWage="getWage"></title-info>
-    <wage-info :wage="wage"></wage-info>
+    <title-info
+      @searchWage="getWage"
+      @download2Excel="download2Excel"
+    ></title-info>
+    <wage-info :wage="wage" ref="wageTable"></wage-info>
     <!-- <div>
         <wage-info :wage="wage"></wage-info>
       </div> -->
@@ -41,6 +44,9 @@ export default {
 
         this.wage = data;
       } catch (error) {}
+    },
+    download2Excel() {
+      this.$refs.wageTable.download();
     },
   },
 };

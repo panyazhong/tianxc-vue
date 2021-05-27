@@ -1,6 +1,12 @@
 <template>
   <div>
-    <el-table :data="wage" size="mini" border :span-method="arraySpanMethod">
+    <el-table
+      :data="wage"
+      size="mini"
+      border
+      :span-method="arraySpanMethod"
+      ref="table"
+    >
       <el-table-column label="月份">
         <template slot-scope="scope">
           {{ scope.row.wageMonth | formatMonth }}
@@ -44,6 +50,7 @@
 
 <script>
 import mixins from '../mixins/mixin';
+import XLSX from 'xlsx';
 export default {
   data() {
     return {
@@ -102,6 +109,20 @@ export default {
           colspan: _col,
         };
       }
+    },
+    download() {
+      const wb = new XLSX.utils.book_new();
+      const table0 = document.getElementsByTagName('table')[0];
+      const thead = table0.getElementsByTagName('thead')[0];
+      const table1 = document.getElementsByTagName('table')[1];
+      const tbody = table1.getElementsByTagName('tbody')[0];
+      table1.insertBefore(thead, tbody);
+
+      const ws = XLSX.utils.table_to_sheet(table1);
+
+      XLSX.utils.book_append_sheet(wb, ws);
+
+      XLSX.writeFile(wb, 'demo.xlsx');
     },
   },
 };

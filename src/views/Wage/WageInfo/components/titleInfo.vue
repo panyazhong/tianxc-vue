@@ -11,6 +11,10 @@
       </el-date-picker>
 
       <el-button type="primary" size="mini" @click="searchWage">查询</el-button>
+
+      <el-button type="primary" size="mini" @click="downloadExcel"
+        >下载表格</el-button
+      >
     </div>
   </div>
 </template>
@@ -31,6 +35,9 @@ export default {
         };
       }
       this.$emit('searchWage', params);
+    },
+    downloadExcel() {
+      this.$emit('download2Excel');
     },
   },
 };
