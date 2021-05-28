@@ -3,47 +3,16 @@
     <el-table
       :data="wage"
       size="mini"
-      border
       :span-method="arraySpanMethod"
+      border
       ref="table"
     >
-      <el-table-column label="月份">
-        <template slot-scope="scope">
-          {{ scope.row.wageMonth | formatMonth }}
-        </template>
-      </el-table-column>
-      <el-table-column label="姓名">
-        <template slot-scope="scope">
-          {{ scope.row.userInfo[0].username }}
-        </template>
-      </el-table-column>
-      <el-table-column label="渠道编码" prop="channelCode"></el-table-column>
-
-      <el-table-column label="基本薪资">
-        <template slot-scope="scope">
-          {{ scope.row.wage | moneyFormat }}
-        </template>
-      </el-table-column>
-      <el-table-column label="考勤天数">
-        <template slot-scope="scope">
-          {{ scope.row.wage | moneyFormat }}
-        </template>
-      </el-table-column>
-      <el-table-column label="绩效">
-        <template slot-scope="scope">
-          {{ scope.row.wage | moneyFormat }}
-        </template>
-      </el-table-column>
-      <el-table-column label="五险一金">
-        <template slot-scope="scope">
-          {{ scope.row.wage | moneyFormat }}
-        </template>
-      </el-table-column>
-      <el-table-column label="实发金额">
-        <template slot-scope="scope">
-          {{ scope.row.wage | moneyFormat }}
-        </template>
-      </el-table-column>
+      <el-table-column
+        :label="item"
+        :key="index"
+        v-for="(item, index) in title"
+        :prop="item"
+      ></el-table-column>
     </el-table>
   </div>
 </template>
@@ -62,16 +31,12 @@ export default {
   props: {
     wage: {
       default() {
-        return [
-          {
-            userInfo: [
-              {
-                username: '',
-              },
-            ],
-            wage: 0,
-          },
-        ];
+        return [];
+      },
+    },
+    title: {
+      default() {
+        return [];
       },
     },
   },
@@ -90,7 +55,7 @@ export default {
           this.spanArr.push(1);
           this.pos = 0;
         } else {
-          if (data[i - 1].wageMonth === data[i].wageMonth) {
+          if (data[i - 1].月份 === data[i].月份) {
             this.spanArr[this.pos]++;
             this.spanArr.push(0);
           } else {

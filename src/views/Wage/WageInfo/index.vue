@@ -7,7 +7,7 @@
       @searchWage="getWage"
       @download2Excel="download2Excel"
     ></title-info>
-    <wage-info :wage="wage" ref="wageTable"></wage-info>
+    <wage-info :wage="wage" ref="wageTable" :title="title"></wage-info>
     <!-- <div>
         <wage-info :wage="wage"></wage-info>
       </div> -->
@@ -27,6 +27,7 @@ export default {
   data() {
     return {
       wage: [],
+      title: [],
     };
   },
   components: {
@@ -41,8 +42,22 @@ export default {
     async getWage(params) {
       try {
         let { data } = await getWageInfo(params);
+        let title = data[0].title;
+        this.title = ['月份'].concat(title);
 
-        this.wage = data;
+        this.wage = data.map((item) => {
+          let data = {
+            月份: item.wageMonth,
+          };
+          title.forEach((tit, index) => {
+            if (tit == '渠道编码') {
+              data[tit] = item.channelCode;
+            } else {
+              data[tit] = item.wage[index - 1];
+            }
+          });
+          return data;
+        });
       } catch (error) {}
     },
     download2Excel() {
