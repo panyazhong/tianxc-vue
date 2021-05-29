@@ -6,6 +6,7 @@ const cardRoutes = [
     meta: {
       title: '红黄牌',
       icon: 'el-icon-document',
+      roles: ['admin', 'user'],
     },
     children: [
       {

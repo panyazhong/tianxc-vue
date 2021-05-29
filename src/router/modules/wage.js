@@ -7,7 +7,7 @@ const WageRoutes = [
     component: layout,
     meta: {
       title: '工资信息',
-      roles: ['admin', 'user'],
+      roles: ['admin', 'user', 'manager'],
       icon: 'el-icon-money',
     },
     children: [
@@ -17,7 +17,7 @@ const WageRoutes = [
         component: () => import('@/views/Wage/WageInfo'),
         meta: {
           title: '工资信息',
-          roles: ['admin', 'user'],
+          roles: ['admin', 'user', 'manager'],
         },
       },
       {

@@ -42,7 +42,7 @@ export const asyncRoutes = [
         path: '/dashboard',
         name: 'Dashboard',
         meta: {
-          roles: ['admin', 'user'],
+          roles: ['admin', 'user', 'manager'],
           title: '概览',
           icon: 'el-icon-menu',
         },
