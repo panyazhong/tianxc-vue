@@ -1,12 +1,6 @@
 <template>
   <div>
-    <el-table
-      :data="wage"
-      size="mini"
-      :span-method="arraySpanMethod"
-      border
-      ref="table"
-    >
+    <el-table :data="wage" size="mini" border ref="table">
       <el-table-column
         :label="item"
         :key="index"
