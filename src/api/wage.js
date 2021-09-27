@@ -15,3 +15,11 @@ export function uploadWage(data) {
     data,
   });
 }
+
+export function deleteWage(data) {
+  return request({
+    url: '/api/wage/deleteWage',
+    method: 'delete',
+    params: data,
+  });
+}

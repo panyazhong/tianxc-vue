@@ -12,19 +12,27 @@
 
       <el-button type="primary" size="mini" @click="searchWage">查询</el-button>
 
+      <el-button type="danger" size="mini" @click="deleteWage">删除</el-button>
+
       <el-button type="primary" size="mini" @click="downloadExcel"
         >下载表格</el-button
       >
     </div>
+
+    <DeleteDialog ref="deleteRef" @deleteSuccess="searchWage"></DeleteDialog>
   </div>
 </template>
 
 <script>
+import DeleteDialog from './deleteDialog';
 export default {
   data() {
     return {
       month: '',
     };
+  },
+  components: {
+    DeleteDialog,
   },
   methods: {
     searchWage() {
@@ -35,6 +43,9 @@ export default {
         };
       }
       this.$emit('searchWage', params);
+    },
+    deleteWage() {
+      this.$refs.deleteRef.show();
     },
     downloadExcel() {
       this.$emit('download2Excel');
