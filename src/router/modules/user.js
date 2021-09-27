@@ -1,5 +1,5 @@
-import layout from '@/views/Layout'
-import { getUserInfo } from '../../api/user'
+import layout from '@/views/Layout';
+import { getUserInfo } from '../../api/user';
 
 const UserRoutes = [
   {
@@ -13,11 +13,11 @@ const UserRoutes = [
         meta: {
           title: '个人中心',
           icon: 'el-icon-user',
-          roles: ['admin', 'user'],
+          roles: ['admin', 'user', 'manager'],
         },
       },
     ],
   },
-]
+];
 
-export default UserRoutes
+export default UserRoutes;
